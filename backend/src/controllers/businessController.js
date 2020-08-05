@@ -17,6 +17,16 @@ module.exports = {
     return response.json(business);
   },
 
+  async negocio(request, response) {
+    const { id } = request.params;
+
+    const business = await connection("business")
+      .where("id", id)
+      .select("*");
+
+    return response.json(business);
+  },
+
   async create(request, response) {
     const {
       name,
@@ -50,7 +60,7 @@ module.exports = {
       sub_category_two
     });
 
-    return response.status(200).send();
+    return response.status(201).send();
   },
 
   async delete(request, response) {
@@ -62,7 +72,7 @@ module.exports = {
       .where("id", id)
       .delete();
 
-    return response.status(204).send();
+    return response.status(200).send();
   },
 
   async update(request, response) {
@@ -101,6 +111,6 @@ module.exports = {
         sub_category_two
       });
 
-    return response.status(204).send();
+    return response.status(200).send();
   }
 };

@@ -32,6 +32,8 @@ routes.post("/photo", upload.single("image"), async (request, response) => {
 
 routes.get("/business", BusinessController.index);
 
+routes.get("/business/:id", BusinessController.negocio);
+
 routes.post("/business", BusinessController.create);
 
 routes.delete("/business/:id", BusinessController.delete);

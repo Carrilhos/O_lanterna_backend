@@ -15,7 +15,7 @@ module.exports = {
       .where("id", id)
       .select("*");
 
-    return response.json(user);
+    return response.json(user[0]);
   },
 
   async create(request, response) {
@@ -31,7 +31,7 @@ module.exports = {
       whatsapp
     });
 
-    return response.json({ id });
+    return response.status(201).send();
   },
 
   async delete(request, response) {
@@ -43,7 +43,7 @@ module.exports = {
       .where("id", id)
       .delete();
 
-    return response.status(204).send();
+    return response.status(200).send();
   },
 
   async update(request, response) {
@@ -55,10 +55,9 @@ module.exports = {
       .update({
         name,
         email,
-        password,
         whatsapp
       });
 
-    return response.status(204).send();
+    return response.status(200).send();
   }
 };
